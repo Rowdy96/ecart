@@ -1,0 +1,14 @@
+.nav-list {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item-list {
+    display: flex;
+    padding: 4px;
+}
+
+.nav-item {
+    list-style-type: none;
+    padding: 12px
+}
