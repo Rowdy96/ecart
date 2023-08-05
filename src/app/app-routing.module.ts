@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -11,6 +13,16 @@ const routes: Routes = [
     path: 'products',
     loadChildren: () => import('./product/product.module').then(m => m.ProductModule),
     title: 'Ecart | List Page'
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+    title: 'Ecart | Signup Page'
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    title: 'Ecart | Login Page'
   }
 ];
 

@@ -22,8 +22,8 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  goToCategory(slug: string): void{
-    this.router.navigateByUrl(`/product-list/${slug}`);
+  goToPage(route: string): void{
+    this.router.navigateByUrl(`/${route}`);
   }
 
 }
