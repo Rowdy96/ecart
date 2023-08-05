@@ -1,0 +1,15 @@
+<div *ngIf="isLoading">
+    Loading....
+</div>
+
+<div>
+   <p> Home/{{slug}}</p>
+   <p>{{slug}} - 6666 items</p>
+</div>
+
+<div class="product-list">
+    <app-product-filter></app-product-filter>
+    <ng-container *ngFor="let product of productList">
+        <app-product-card [product]="product"></app-product-card>
+    </ng-container>
+</div>

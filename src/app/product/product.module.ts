@@ -1,15 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductCartComponent } from './product-cart/product-cart.component';
 
+import { ProductRoutingModule } from './product-routing.module';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
 
 
 @NgModule({
   declarations: [
-    ProductCartComponent
+    ProductListComponent,
+    ProductDetailsComponent,
+    ProductCardComponent,
+    ProductFilterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProductRoutingModule
   ]
 })
 export class ProductModule { }

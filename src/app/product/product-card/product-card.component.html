@@ -1,0 +1,10 @@
+<section class="product-card">
+    <a [routerLink]="[product.id]">
+        <img [src]="product.image" width="150" height="150">
+    </a>
+    <p class="line-clamp"> {{product.title}} </p>
+    <p> {{product.price | currency}} </p>
+    <p> rating : {{product.rating.rate}}</p>
+
+    <button>Add to cart</button>
+</section>
