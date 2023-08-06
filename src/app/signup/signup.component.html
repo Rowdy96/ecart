@@ -4,94 +4,113 @@
             <h1>Sign Up</h1>
             <p>Please fill in this form to create an account.</p>
             <hr>
-            <div>
-                <input 
-                    type="text" 
-                    placeholder="Enter Email" 
-                    name="email"
-                    formControlName="email" 
-                    required
-                >
-                <input 
-                    type="password" 
-                    placeholder="Enter username" 
-                    name="username" 
-                    formControlName="username"
-                    required
-                >
-            </div>
 
             <div>
-                <input 
-                    type="text" 
-                    placeholder="Enter first name" 
-                    name="fName"
-                    formControlName="firstname"
-                    required
-                >
-                <input 
-                    type="text" 
-                    placeholder="Enter last name" 
-                    name="lName" 
-                    formControlName="lastname"
-                    required
-                >
+                <input type="text" placeholder="Enter Email" name="email" formControlName="email" required>
+                <div *ngIf="f['email'].invalid && (f['email'].dirty || !f['email'].untouched)">
+                    <span *ngIf="f['email'].errors?.['required']">
+                        Email is required.
+                    </span>
+                    <span *ngIf="f['email'].errors?.['email']">
+                        Please enter proper email.
+                    </span>
+                </div>
+
+                <input type="text" placeholder="Enter phone" name="phone" formControlName="phone">
+                <div *ngIf="f['phone'].invalid && (f['phone'].dirty || !f['phone'].untouched)">
+                    <span *ngIf="f['phone'].errors?.['required']">
+                        Phone No. is required.
+                    </span>
+                </div>
+
+                <input type="text" placeholder="Enter username" name="username" formControlName="username" required>
+                <div *ngIf="f['username'].invalid && (f['username'].dirty || !f['username'].untouched)">
+                    <span *ngIf="f['username'].errors?.['required']">
+                        Username is required.
+                    </span>
+                </div>
+
             </div>
+
+            <hr>
+
+            <div formGroupName="name">
+                <input type="text" placeholder="Enter first name" name="fName" formControlName="firstname">
+                <div
+                    *ngIf="f['name'].controls['firstname'].invalid && (f['name'].controls['firstname'].dirty || !f['name'].controls['firstname'].untouched)">
+                    <span *ngIf="f['name'].controls['firstname'].errors?.['required']">
+                        First name is required.
+                    </span>
+                </div>
+
+                <input type="text" placeholder="Enter last name" name="lName" formControlName="lastname">
+                <div
+                    *ngIf="f['name'].controls['lastname'].invalid && (f['name'].controls['lastname'].dirty || !f['name'].controls['lastname'].untouched)">
+                    <span *ngIf="f['name'].controls['lastname'].errors?.['required']">
+                        Last name is required.
+                    </span>
+                </div>
+            </div>
+
+            <hr>
 
             <div>
-                <input 
-                    type="password" 
-                    placeholder="Enter password" 
-                    name="password"
-                    formControlName="password" 
-                    required
-                >
-                <input 
-                    type="text" 
-                    placeholder="Enter repeat password" 
-                    name="repeatPassword"
-                    formControlName="repeatPassword" 
-                    required
-                >
+                <input type="password" placeholder="Enter password" name="password" formControlName="password" required>
+                <div *ngIf="f['password'].invalid && (f['password'].dirty || !f['password'].untouched)">
+                    <p *ngIf="f['password'].errors?.['required']">
+                        Password is required.
+                    </p>
+                </div>
+                <input type="text" placeholder="Enter repeat password" name="repeatPassword"
+                    formControlName="repeatPassword" required>
+                <div
+                    *ngIf="f['repeatPassword'].invalid && (f['repeatPassword'].dirty || !f['repeatPassword'].untouched)">
+                    <p *ngIf="f['repeatPassword'].errors?.['required']">
+                        Please enter confrim password
+                    </p>
+                </div>
+                <div
+                    *ngIf="signUpForm.errors?.['notConfirmedPassword'] && (f['repeatPassword'].dirty || !f['repeatPassword'].untouched)">
+                    <p>
+                        Please re enter correct password
+                    </p>
+                </div>
             </div>
 
-            <div>
-                <input 
-                    type="text" 
-                    placeholder="Enter city" 
-                    name="city"
-                    formControlName="city"  
-                    required
-                >
-                <input 
-                    type="text" 
-                    placeholder="Enter street" 
-                    name="street"
-                    formControlName="street"  
-                    required
-                >
-                <input 
-                    type="text" 
-                    placeholder="Enter zipcode" 
-                    name="zipcode"
-                    formControlName="zipcode"  
-                    required
-                >
-                <input 
-                    type="text" 
-                    placeholder="Enter phone" 
-                    name="phone"
-                    formControlName="phone"  
-                    required
-                >
+            <hr>
+
+            <div formGroupName="address">
+                <input type="text" placeholder="Enter city" name="city" formControlName="city">
+                <div
+                    *ngIf="f['address'].controls['city'].invalid && (f['address'].controls['city'].dirty || !f['address'].controls['city'].untouched)">
+                    <span *ngIf="f['address'].controls['city'].errors?.['required']">
+                        City is required.
+                    </span>
+                </div>
+
+                <input type="text" placeholder="Enter street" name="street" formControlName="street">
+                <div
+                    *ngIf="f['address'].controls['street'].invalid && (f['address'].controls['street'].dirty || !f['address'].controls['street'].untouched)">
+                    <span *ngIf="f['address'].controls['street'].errors?.['required']">
+                        Street name is required.
+                    </span>
+                </div>
+
+                <input type="text" placeholder="Enter zipcode" name="zipcode" formControlName="zipcode">
+                <div
+                    *ngIf="f['address'].controls['zipcode'].invalid && (f['address'].controls['zipcode'].dirty || !f['address'].controls['zipcode'].untouched)">
+                    <span *ngIf="f['address'].controls['zipcode'].errors?.['required']">
+                        Zipcode is required.
+                    </span>
+                </div>
             </div>
 
-            <p>By creating an account you agree to our <a >Terms & Privacy</a>.</p>
+            <p>By creating an account you agree to our <a>Terms & Privacy</a>.</p>
             <p>Aleady have an account ?<a routerLink="/login">Login here</a>.</p>
 
             <div class="clearfix">
                 <button type="button" class="cancelbtn" (click)="goBack()">Go Back</button>
-                <button type="submit" class="signupbtn">Sign Up</button>
+                <button type="submit" class="signupbtn" [disabled]="signUpForm.invalid">Sign Up</button>
             </div>
         </div>
     </form>

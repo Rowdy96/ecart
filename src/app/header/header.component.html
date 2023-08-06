@@ -13,10 +13,11 @@
         </ul>
         <div style="float:right">
             <input class="nav-item" type="text" name="search" id="search-box">
-            <button class="nav-item">Profile</button>
-            <button class="nav-item">Wishlist</button>
-            <button class="nav-item">Bag</button>
-            <button class="nav-item" (click)="goToPage('login')">Login/Sign Up</button>
+            <button class="nav-item" (click)="goToPage('user')">Profile</button>
+            <button class="nav-item" (click)="goToPage('user/wishlist')">Wishlist</button>
+            <button class="nav-item" (click)="goToPage('user/cart')">Bag</button>
+            <button *ngIf="!isLoggedInUser" class="nav-item" (click)="goToPage('login')">Login/Sign Up</button>
+            <button *ngIf="isLoggedInUser" class="nav-item" (click)="logout()">Logout</button>
         </div>
     </div>
 

@@ -6,6 +6,7 @@
 
 /* Full-width input fields */
 input[type=text],
+input[type=number],
 input[type=password] {
     width: 40%;
     padding: 15px;
@@ -22,7 +23,7 @@ input[type=password]:focus {
 }
 
 hr {
-    border: 1px solid #f1f1f1;
+    border: 1px solid #f1eaea;
     margin-bottom: 25px;
 }
 

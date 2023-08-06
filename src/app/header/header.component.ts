@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -13,8 +14,13 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
   ){}
+
+  get isLoggedInUser(){
+    return this.authService.isLoggedIn;
+  }
 
   ngOnInit(): void {
     this.productService.getAllCategories().subscribe(response => {
@@ -24,6 +30,11 @@ export class HeaderComponent implements OnInit {
 
   goToPage(route: string): void{
     this.router.navigateByUrl(`/${route}`);
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigateByUrl('/');
   }
 
 }

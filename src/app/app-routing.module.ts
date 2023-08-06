@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { authGuard, loginGuard } from './route-guards/auth.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -15,14 +17,26 @@ const routes: Routes = [
     title: 'Ecart | List Page'
   },
   {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule),
+    canActivate: [authGuard]
+  },
+  {
     path: 'signup',
     component: SignupComponent,
-    title: 'Ecart | Signup Page'
+    title: 'Ecart | Signup Page',
+    canActivate: [loginGuard]
   },
   {
     path: 'login',
     component: LoginComponent,
-    title: 'Ecart | Login Page'
+    title: 'Ecart | Login Page',
+    canActivate: [loginGuard]
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+    title: 'Ecart | Page not found'
   }
 ];
 
